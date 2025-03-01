@@ -1,8 +1,7 @@
+export const revalidate=5;
+//export const dynamic = "force-dynamic";
 export default async function Home() {
-  /*  const data = await new Promise((resolve) =>
-    setTimeout(() =>resolve("Data loaded "), 3000)
-  );
-  */ return (
+  return (
     <div>
       <main>
         {/*        <p>{data as string} </p> */}

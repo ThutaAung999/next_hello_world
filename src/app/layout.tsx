@@ -20,9 +20,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  dashboard,
 
 }: Readonly<{
   children: React.ReactNode;
+  dashboard:React.ReactNode;
 
 }>) {
 
@@ -38,7 +40,7 @@ export default function RootLayout({
           {/*  <Link href="/settings/profile">Profile</Link> */}
         </nav>
         {children}
-        {}
+        {dashboard}
       </body>
     </html>
   );
