@@ -20,27 +20,26 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  dashboard,
-
-}: Readonly<{
+}: //dashboard,
+Readonly<{
   children: React.ReactNode;
-  dashboard:React.ReactNode;
-
 }>) {
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <nav className="underline mx-4 space-x-4">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/settings">Settings</Link>
-          {/*  <Link href="/settings/profile">Profile</Link> */}
+        <nav className="flex justify-between items-center p-2 bg-blue-600 text-white">
+          <Link href={'/'} className="text-3xl font-bold ">BLOGY</Link>
+          <Link
+            href="/create"
+            className="text-blue-400 p-2 bg-white rounded-md font-medium text-sm"
+          >
+            Crete new blog
+          </Link>
         </nav>
-        {children}
-        {dashboard}
+
+        <div className="px-2">{children}</div>
       </body>
     </html>
   );

@@ -1,17 +1,20 @@
 import CustomButton from "@/components/custom-button";
-import { updateData } from "@/server/action";
+import { getPost, updatePost } from "@/server/action";
 
 type EditTodoProps = {
   params: Promise<{
     id: string;
   }>;
 };
-const EditTodo = async ({ params }: EditTodoProps) => {
+const EditPost = async ({ params }: EditTodoProps) => {
   const resolvedParams = await params;
+
+  const {success} = await getPost(Number(resolvedParams.id));
+
   return (
-    <main>
-      <h2>Update Todo</h2>
-      <form action={updateData}>
+    <main className="mt-4">
+      <h2>Update Post</h2>
+      <form action={updatePost}>
         <input
           type="text"
           name="id"
@@ -19,17 +22,31 @@ const EditTodo = async ({ params }: EditTodoProps) => {
           readOnly
           hidden
         />
-        <input
-          type="text"
-          className="border border-green-600 p-2 rounded-md block mt-2"
-          name="todoTitle"
-          placeholder="Todo Title"
-          required
-        />
-        <CustomButton label="Edit todo" />
+
+        <div className="space-y-4 mt-4">
+          <input
+            required
+            placeholder="Title"
+            className="bg-transparent w-full border-2 border-blue-600 rounded-md focus:outline-none p-2"
+            type="text"
+            name="title"
+            defaultValue={success?.title}
+          />
+          <textarea
+            required
+            placeholder="Description"
+            className="bg-transparent w-full border-2 border-blue-600 rounded-md focus:outline-none p-2 block"
+            name="description"
+            rows={5}
+            defaultValue={success?.description}
+          />
+        </div>
+        <div className="flex justify-end">
+          <CustomButton label="Edit Post" />
+        </div>
       </form>
     </main>
   );
 };
 
-export default EditTodo;
+export default EditPost;

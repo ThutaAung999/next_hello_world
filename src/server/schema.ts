@@ -14,3 +14,9 @@ export const usersTable = pgTable("users", {
   email: varchar({ length: 255 }).notNull().unique(),
 });
  */
+
+export const posts= pgTable("posts",{
+  id: serial("id").primaryKey(),
+  title:text("title").notNull(),
+  description:text("description").notNull(),
+})
